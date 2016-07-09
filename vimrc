@@ -6,33 +6,34 @@ call vundle#rc()
 
 " --- github plugins
 " let Vundle manage Vundle ( https://github.com/gmarik/vundle/ )
-Bundle 'gmarik/vundle'
-Bundle 'Raimondi/delimitMate'
-Bundle 'majutsushi/tagbar'
-Bundle 'rking/ag.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'kana/vim-scratch'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-surround'
-"Bundle 'tpope/vim-fugitive'  " good but to difficult to remember command if you don't use it regulary
-Bundle 'bernh/ctrlp.vim'
-Bundle 'bling/vim-airline'
-Bundle 'junegunn/vim-easy-align'
-Bundle 'justinmk/vim-sneak'
-Bundle 'dag/vim2hs'
-Bundle 'mbbill/undotree'
-Bundle 'ervandew/supertab'
-Bundle 'davidhalter/jedi-vim'
+Plugin 'gmarik/vundle'
+Plugin 'Raimondi/delimitMate'
+Plugin 'majutsushi/tagbar'
+Plugin 'rking/ag.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'kana/vim-scratch'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
+"Plugin 'tpope/vim-fugitive'  " good but to difficult to remember command if you don't use it regulary
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'bling/vim-airline'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'justinmk/vim-sneak'
+Plugin 'dag/vim2hs'
+Plugin 'mbbill/undotree'
+Plugin 'ervandew/supertab'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'rust-lang/rust.vim'
 
 "colorschemes
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'therubymug/vim-pyte'
-Bundle 'noahfrederick/vim-hemisu'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'therubymug/vim-pyte'
+Plugin 'noahfrederick/vim-hemisu'
 
 " from github vim-scripts
-"Bundle 'a.vim'   " FIXME problems with insert map mappings starting with space
+"Plugin 'a.vim'   " FIXME problems with insert map mappings starting with space
                    " see ":map!" for the mappings, remove with iunmap
-Bundle 'Mark--Karkat'
+Plugin 'Mark--Karkat'
 
 
 " All of your Plugins must be added before the following line
@@ -175,7 +176,7 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-nnoremap <F4> :Explore<CR>
+nnoremap <F4> :Lexplore<CR>
 nnoremap <F5> :nohlsearch<CR>:MarkClear<CR>
 nnoremap <F6> :set invspell<CR>
 "remove trailing whitespace
