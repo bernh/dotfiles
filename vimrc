@@ -53,8 +53,6 @@ set clipboard=unnamed
 set fileformats=unix,dos
 " use the directory of the current buffer for the file browser
 set browsedir=buffer
-" behaviour of the backspace-key
-set backspace=indent,eol,start
 " save before calling make
 set autowrite
 " always allows rectangles in visual block mode
@@ -63,8 +61,6 @@ set virtualedit=block
 set display=uhex
 " allow hidden buffers without saving
 set hidden
-" statusline
-set laststatus=2
 " don't move cursor to first char in line
 set noeol
 " everything in English please
@@ -72,8 +68,6 @@ language en_US.utf8
 " enable spell checking by default, 10 suggestions are enough
 set spell
 set spellsuggest=10
-" current position with line+column and the percentage within the buffer.
-set ruler
 " 80 is the texwidth god intended
 set textwidth=80
 set formatoptions=qrn1
@@ -82,13 +76,9 @@ set nowrap
 " relativenumber... the best thing since sliced bread!
 set relativenumber
 set number
-" set default encoding
-set encoding=utf-8
 " show mode (INSERT, VISUAL, etc.)
 set showmode
 set showcmd
-" better completion for command line
-set wildmenu
 " smother redraw
 set ttyfast
 " no beep
@@ -123,15 +113,12 @@ endif
 " --- settings for searching --------------------------------------------------
 set ignorecase
 set smartcase
-set incsearch
 set nohlsearch  " I use the Mark plugin for explicit highlighting
 set showmatch
 
 " --- indentation -------------------------------------------------------------
 set expandtab
-set smarttab
 set shiftwidth=4
-set autoindent
 set shiftround
 
 " --- mappings ----------------------------------------------------------------
