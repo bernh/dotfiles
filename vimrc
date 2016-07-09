@@ -1,52 +1,45 @@
 set nocompatible               " be iMproved
-filetype off                   " required!
 
-set rtp+=$HOME/.vim/bundle/Vundle.vim"
-call vundle#rc()
+call plug#begin('~/.vim/plugged')
 
 " --- github plugins
-" let Vundle manage Vundle ( https://github.com/gmarik/vundle/ )
-Plugin 'gmarik/vundle'
-Plugin 'Raimondi/delimitMate'
-Plugin 'majutsushi/tagbar'
-Plugin 'rking/ag.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'kana/vim-scratch'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-surround'
-"Plugin 'tpope/vim-fugitive'  " good but to difficult to remember command if you don't use it regulary
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'bling/vim-airline'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'justinmk/vim-sneak'
-Plugin 'dag/vim2hs'
-Plugin 'mbbill/undotree'
-Plugin 'ervandew/supertab'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'rust-lang/rust.vim'
+Plug 'Raimondi/delimitMate'
+Plug 'majutsushi/tagbar'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/syntastic'
+Plug 'kana/vim-scratch'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-vinegar'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'bling/vim-airline'
+Plug 'junegunn/vim-easy-align'
+Plug 'justinmk/vim-sneak'
+Plug 'ervandew/supertab'
+Plug 'davidhalter/jedi-vim'
+Plug 'rust-lang/rust.vim'
+Plug 'jrosiek/vim-mark'
 
 "colorschemes
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'therubymug/vim-pyte'
-Plugin 'noahfrederick/vim-hemisu'
+Plug 'altercation/vim-colors-solarized'
+Plug 'therubymug/vim-pyte'
+Plug 'noahfrederick/vim-hemisu'
 
 " from github vim-scripts
 "Plugin 'a.vim'   " FIXME problems with insert map mappings starting with space
                    " see ":map!" for the mappings, remove with iunmap
-Plugin 'Mark--Karkat'
 
+call plug#end() 
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-
-" Brief Help
-" :PluginInstall  - install bundles (won't update installed)
-" :PluginInstall! - update if installed
-" :PluginClean    - uninstall bundles
-
-
-syntax on
+" Brief Help for vim-plug
+" PlugInstall [name ...] [#threads] 	Install plugins
+" PlugUpdate [name ...] [#threads] 	Install or update plugins
+" PlugClean[!] 	Remove unused directories (bang version will clean without prompt)
+" PlugUpgrade 	Upgrade vim-plug itself
+" PlugStatus 	Check the status of plugins
+" PlugDiff 	Examine changes from the previous update and the pending changes
+" PlugSnapshot[!] [output path] 	Generate script for restoring the current snapshot of the plugins
 
 
 " backup
@@ -252,3 +245,6 @@ let g:syntastic_mode_map = { "mode": "passive",
 
 " easy-align settings
  vnoremap <leader>a :EasyAlign<CR>
+
+" Mark settings
+let g:mwDefaultHighlightingPalette = 'extended'
