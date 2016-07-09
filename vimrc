@@ -12,6 +12,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-repeat'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'bling/vim-airline'
 Plug 'junegunn/vim-easy-align'
@@ -223,15 +224,20 @@ let g:airline_right_sep = ''
 let g:airline#extensions#tagbar#enabled = 0  " performance!
 
 " syntastic settings
-let g:syntastic_enable_signs    = 0  " no signs, we use airline syntastic anyway
-let g:syntastic_enable_balloons = 0
-let g:syntastic_auto_loc_list   = 1
+"let g:syntastic_enable_signs    = 0  " no signs, we use airline syntastic anyway
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { "mode": "passive",
-                            \ "active_filetypes": ["python"],
-                            \ "passive_filetypes": [] }
+                           \ "active_filetypes": ["python", "rust"],
+                           \ "passive_filetypes": [] }
 
 " easy-align settings
  vnoremap <leader>a :EasyAlign<CR>
 
 " Mark settings
 let g:mwDefaultHighlightingPalette = 'extended'
+
+" rust settings
+let g:rustfmt_autosave = 1
