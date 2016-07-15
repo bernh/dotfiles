@@ -64,8 +64,11 @@ set display=uhex
 set hidden
 " don't move cursor to first char in line
 set noeol
-" everything in English please
-language en_US.utf8
+if has("win32")
+else
+    " everything in English please
+    language en_US.utf8
+endif
 " enable spell checking by default, 10 suggestions are enough
 set spell
 set spellsuggest=10
@@ -163,7 +166,11 @@ nnoremap <F6> :set invspell<CR>
 "remove trailing whitespace
 nnoremap <F8> :%s/\s\+$//e<CR>:w<CR>
 "update ctags db
-nnoremap <F12> :!ctags -R *<CR><CR>
+if has("win32")
+    nnoremap <F12> :!C:/Users/leiner/bin/ctags -R *<CR><CR>
+else
+    nnoremap <F12> :!ctags -R *<CR><CR>
+endif
 
 " cycle through tabs
 nnoremap <C-tab> :tabnext<CR>
@@ -178,7 +185,7 @@ command! Wa wa                       " map :Wa to :wa
 autocmd FocusLost * silent! wall     " always save all files when editor looses focus
 
 " --- abbreviations -----------------------------------------------------
-iab pdb import pdb;pdb.set_trace()<ESC>
+iab pdb import ipdb;ipdb.set_trace()<ESC>
 iab isodate <C-R>=strftime("%Y-%m-%d")<CR>
 
 " --- configure Plugins -------------------------------------------------
@@ -186,6 +193,9 @@ iab isodate <C-R>=strftime("%Y-%m-%d")<CR>
 nnoremap <F2> :Ag! <CR>
 nnoremap <leader>f :Ag!<Space>
 let g:ag_mapping_message=0
+if has("win32")
+    let g:ag_prg="C:/Users/leiner/bin/ag.exe --nogroup --nocolor --column"
+endif
 
 " tagbar
 nnoremap <F3> :TagbarToggle<CR>
@@ -201,7 +211,7 @@ endif
 
 " some ctrlp settings
 let g:ctrlp_max_height = 20
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 0
 let g:ctrlp_show_hidden = 0  " do not search dotfiles or within dot directories
 let g:ctrlp_clear_cache_on_exit = 0  " keep cache files around, press F5 for refresh
 let g:ctrlp_use_caching = 1
