@@ -3,7 +3,7 @@ set nocompatible               " be iMproved
 call plug#begin('~/.vim/plugged')
 
 " --- github plugins
-Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'  " better than delimitMate
 Plug 'majutsushi/tagbar'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
@@ -13,6 +13,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'bling/vim-airline'
 Plug 'junegunn/vim-easy-align'
@@ -102,8 +103,8 @@ if has("gui_running")
     set guioptions-=T
     set guioptions-=m
     set guitablabel=%N
-    colorscheme hemisu
-    set background=light
+    colorscheme solarized
+    set background=dark
     set columns=125
     set lines=50
     if has("win32")
@@ -183,6 +184,7 @@ nnoremap <silent> p p`]
 " --- (auto)commands ----------------------------------------------------
 command! Wa wa                       " map :Wa to :wa
 autocmd FocusLost * silent! wall     " always save all files when editor looses focus
+command! Bd bp | sp | bn | bd         " delete buffer bug keep window
 
 " --- abbreviations -----------------------------------------------------
 iab pdb import ipdb;ipdb.set_trace()<ESC>
@@ -251,3 +253,6 @@ let g:mwDefaultHighlightingPalette = 'extended'
 
 " rust settings
 let g:rustfmt_autosave = 1
+
+" sneak settings
+let g:sneak#streak = 1
