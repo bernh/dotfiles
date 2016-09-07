@@ -213,7 +213,6 @@ endif
 
 " some ctrlp settings
 let g:ctrlp_max_height = 20
-let g:ctrlp_working_path_mode = 0
 let g:ctrlp_show_hidden = 0  " do not search dotfiles or within dot directories
 let g:ctrlp_clear_cache_on_exit = 0  " keep cache files around, press F5 for refresh
 let g:ctrlp_use_caching = 1
@@ -222,13 +221,7 @@ let g:ctrlp_extensions = ['tag', 'bookmarkdir']
 nnoremap <c-p>p :CtrlP<CR>
 nnoremap <c-p>t :CtrlPTag<CR>
 nnoremap <c-p>r :CtrlPMRUFiles<CR>
-nnoremap <c-p>m :CtrlPMixed<CR>
 nnoremap <c-p>d :CtrlPBookmarkDir<CR>
-
-" some jedi-vim settings
-"let g:jedi#use_tabs_not_buffers = 0
-"let g:jedi#popup_on_dot = 0
-"let g:jedi#show_function_definition = "0"
 
 " airline settings
 let g:airline_left_sep = ''
@@ -250,9 +243,6 @@ let g:syntastic_mode_map = { "mode": "passive",
 
 " Mark settings
 let g:mwDefaultHighlightingPalette = 'extended'
-
-" rust settings
-let g:rustfmt_autosave = 1
 
 " sneak settings
 let g:sneak#streak = 1
