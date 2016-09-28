@@ -5,7 +5,7 @@ call plug#begin('~/.vim/plugged')
 " --- github plugins
 Plug 'jiangmiao/auto-pairs'  " better than delimitMate
 Plug 'majutsushi/tagbar'
-Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'       " can also be used with ag and ripgrep   
 Plug 'scrooloose/syntastic'
 Plug 'kana/vim-scratch'
 Plug 'tpope/vim-commentary'
@@ -125,6 +125,7 @@ set showmatch
 set expandtab
 set shiftwidth=4
 set shiftround
+set breakindent  " wrapped line repeats indent
 
 " --- mappings ----------------------------------------------------------------
 " set the leader from \ to <Space>
@@ -191,13 +192,10 @@ iab pdb import ipdb;ipdb.set_trace()<ESC>
 iab isodate <C-R>=strftime("%Y-%m-%d")<CR>
 
 " --- configure Plugins -------------------------------------------------
-" Ag
-nnoremap <F2> :Ag! <CR>
-nnoremap <leader>f :Ag!<Space>
-let g:ag_mapping_message=0
-if has("win32")
-    let g:ag_prg="C:/Users/leiner/bin/ag.exe --nogroup --nocolor --column"
-endif
+" Ack and ripgrep
+nnoremap <F2> :Ack! <CR>
+nnoremap <leader>f :Ack!<Space>
+let g:ackprg="rg --vimgrep --smart-case"
 
 " tagbar
 nnoremap <F3> :TagbarToggle<CR>
