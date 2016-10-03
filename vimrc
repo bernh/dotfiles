@@ -15,7 +15,8 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/vim-easy-align'
 Plug 'justinmk/vim-sneak'
 Plug 'ervandew/supertab'
@@ -65,9 +66,11 @@ set display=uhex
 set hidden
 " don't move cursor to first char in line
 set noeol
+" UTF-8 please
+set encoding=utf-8
+" everything in English please
 if has("win32")
 else
-    " everything in English please
     language en_US.utf8
 endif
 " enable spell checking by default, 10 suggestions are enough
@@ -95,6 +98,8 @@ set title
 set titlestring=%{getcwd()}
 " faster macro execution
 set lazyredraw
+" two spacing people are crazy
+set nojoinspaces
 
 " --- GUI specific settings----------------------------------------------------
 
@@ -114,6 +119,8 @@ else
     set t_Co=256
 endif
 
+" other visibility things
+set fillchars=stl:─,stlnc:─,vert:│,fold:─,diff:─
 
 " --- settings for searching --------------------------------------------------
 set ignorecase
