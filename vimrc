@@ -5,7 +5,7 @@ call plug#begin('~/.vim/plugged')
 " --- github plugins
 Plug 'jiangmiao/auto-pairs'  " better than delimitMate
 Plug 'majutsushi/tagbar'
-Plug 'mileszs/ack.vim'       " can also be used with ag and ripgrep   
+Plug 'mileszs/ack.vim'       " can also be used with ag and ripgrep
 Plug 'scrooloose/syntastic'
 Plug 'kana/vim-scratch'
 Plug 'tpope/vim-commentary'
@@ -33,7 +33,7 @@ Plug 'noahfrederick/vim-hemisu'
 "Plugin 'a.vim'   " FIXME problems with insert map mappings starting with space
                    " see ":map!" for the mappings, remove with iunmap
 
-call plug#end() 
+call plug#end()
 
 " Brief Help for vim-plug
 " PlugInstall [name ...] [#threads] 	Install plugins
@@ -175,11 +175,7 @@ nnoremap <F6> :set invspell<CR>
 "remove trailing whitespace
 nnoremap <F8> :%s/\s\+$//e<CR>:w<CR>
 "update ctags db
-if has("win32")
-    nnoremap <F12> :!C:/Users/leiner/bin/ctags -R *<CR><CR>
-else
-    nnoremap <F12> :!ctags -R *<CR><CR>
-endif
+nnoremap <F12> :!ctags -R *<CR><CR>
 
 " cycle through tabs
 nnoremap <C-tab> :tabnext<CR>
