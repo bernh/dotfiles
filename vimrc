@@ -11,7 +11,6 @@ Plug 'kana/vim-scratch'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -19,8 +18,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/vim-easy-align'
 Plug 'justinmk/vim-sneak'
+Plug 'justinmk/vim-dirvish'
 Plug 'ervandew/supertab'
-Plug 'davidhalter/jedi-vim'
+Plug 'maralla/completor.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'jrosiek/vim-mark'
 
@@ -28,6 +28,7 @@ Plug 'jrosiek/vim-mark'
 Plug 'altercation/vim-colors-solarized'
 Plug 'therubymug/vim-pyte'
 Plug 'noahfrederick/vim-hemisu'
+Plug 'alessandroyorba/despacio'
 
 " from github vim-scripts
 "Plugin 'a.vim'   " FIXME problems with insert map mappings starting with space
@@ -102,21 +103,21 @@ set lazyredraw
 set nojoinspaces
 
 " --- GUI specific settings----------------------------------------------------
-
 if has("gui_running")
     " away with the toolbar and the menu
     set guioptions-=T
     set guioptions-=m
     set guitablabel=%N
-    colorscheme solarized
     set background=dark
     set columns=125
     set lines=50
     if has("win32")
         set guifont=Consolas
     endif
+    colorscheme hemisu
 else
     set t_Co=256
+    colorscheme default
 endif
 
 " other visibility things
@@ -133,6 +134,13 @@ set expandtab
 set shiftwidth=4
 set shiftround
 set breakindent  " wrapped line repeats indent
+
+" --- functions ---------------------------------------------------------
+function! RandomColorScheme()
+    let schemes = "solarized pyte hemisu despacio desert morning peachpuff"
+    let seconds = str2nr(strftime('%S'))
+    execute 'colorscheme '.split(schemes)[seconds%7]
+endfunction
 
 " --- mappings ----------------------------------------------------------------
 " set the leader from \ to <Space>
@@ -172,8 +180,10 @@ vnoremap <F1> <ESC>
 nnoremap <F4> :Lexplore<CR>
 nnoremap <F5> :nohlsearch<CR>:MarkClear<CR>
 nnoremap <F6> :set invspell<CR>
+nnoremap <F7> :call RandomColorScheme()<CR>
+
 "remove trailing whitespace
-nnoremap <F8> :%s/\s\+$//e<CR>:w<CR>
+nnoremap <F11> :%s/\s\+$//e<CR>:w<CR>
 "update ctags db
 nnoremap <F12> :!ctags -R *<CR><CR>
 
@@ -194,6 +204,7 @@ command! Bd bp | sp | bn | bd         " delete buffer bug keep window
 iab pdb import ipdb;ipdb.set_trace()<ESC>
 iab isodate <C-R>=strftime("%Y-%m-%d")<CR>
 
+
 " --- configure Plugins -------------------------------------------------
 " Ack and ripgrep
 nnoremap <F2> :Ack! <CR>
@@ -206,11 +217,6 @@ nnoremap <F3> :TagbarToggle<CR>
 " Scratch
 let g:scratch_buffer_name = "Scratch"
 nnoremap <leader><tab> :ScratchOpen<CR>
-
-if has("gui_running")
-    " ToggleBg (comes with solarized)
-    call togglebg#map("<F7>")
-endif
 
 " some ctrlp settings
 let g:ctrlp_max_height = 20
@@ -247,3 +253,4 @@ let g:mwDefaultHighlightingPalette = 'extended'
 
 " sneak settings
 let g:sneak#streak = 1
+
