@@ -108,12 +108,12 @@ if has("gui_running")
     set guioptions-=T
     set guioptions-=m
     set guitablabel=%N
-    set background=dark
     set columns=125
     set lines=50
     if has("win32")
         set guifont=Consolas
     endif
+    set background=light
     colorscheme hemisu
 else
     set t_Co=256
@@ -206,10 +206,15 @@ iab isodate <C-R>=strftime("%Y-%m-%d")<CR>
 
 
 " --- configure Plugins -------------------------------------------------
-" Ack and ripgrep
+" Ack
 nnoremap <F2> :Ack! <CR>
 nnoremap <leader>f :Ack!<Space>
-let g:ackprg="rg --vimgrep --smart-case"
+" ripgrep extension
+if executable('rg')
+    let g:ackprg="rg --vimgrep --smart-case"
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
 
 " tagbar
 nnoremap <F3> :TagbarToggle<CR>
@@ -229,6 +234,13 @@ nnoremap <c-p>p :CtrlP<CR>
 nnoremap <c-p>t :CtrlPTag<CR>
 nnoremap <c-p>r :CtrlPMRUFiles<CR>
 nnoremap <c-p>d :CtrlPBookmarkDir<CR>
+" ripgrep extension
+if executable('rg')
+  " Use rg in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'rg %s --files -g ""'
+  " gg is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
 
 " airline settings
 let g:airline_left_sep = ''
