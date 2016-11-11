@@ -5,7 +5,7 @@ call plug#begin('~/.vim/plugged')
 " --- github plugins
 Plug 'jiangmiao/auto-pairs'  " better than delimitMate
 Plug 'majutsushi/tagbar'
-Plug 'mileszs/ack.vim'       " can also be used with ag and ripgrep
+Plug 'mhinz/vim-grepper'
 Plug 'scrooloose/syntastic'
 Plug 'kana/vim-scratch'
 Plug 'tpope/vim-commentary'
@@ -120,9 +120,6 @@ else
     colorscheme default
 endif
 
-" other visibility things
-set fillchars=stl:─,stlnc:─,vert:│,fold:─,diff:─
-
 " --- settings for searching --------------------------------------------------
 set ignorecase
 set smartcase
@@ -157,7 +154,7 @@ nnoremap Q @q
 
 " reload and edit vimrc
 nnoremap <leader>sv :source $MYVIMRC<CR>
-nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <leader>ev :edit $MYVIMRC<CR>
 
 " delete a buffer without closing the window
 nnoremap <leader>b :bp<CR>:bd #<CR>
@@ -206,12 +203,12 @@ iab isodate <C-R>=strftime("%Y-%m-%d")<CR>
 
 
 " --- configure Plugins -------------------------------------------------
-" Ack
-nnoremap <F2> :Ack! <CR>
-nnoremap <leader>f :Ack!<Space>
-" ripgrep extension
+" vim-grepper
+nnoremap <F2> :Grepper -tool rg -open -cword -noprompt<CR>
+nnoremap <leader>f :Grepper -tool rg<CR>
+
+" ripgrep without Grepper
 if executable('rg')
-    let g:ackprg="rg --vimgrep --smart-case"
     set grepprg=rg\ --vimgrep\ --no-heading
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
@@ -265,4 +262,3 @@ let g:mwDefaultHighlightingPalette = 'extended'
 
 " sneak settings
 let g:sneak#streak = 1
-
