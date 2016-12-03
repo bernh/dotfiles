@@ -3,7 +3,7 @@ set nocompatible               " be iMproved
 call plug#begin('~/.vim/plugged')
 
 " --- github plugins
-Plug 'jiangmiao/auto-pairs'  " better than delimitMate
+Plug 'jiangmiao/auto-pairs'  " better than delimitMate?
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-grepper'
 Plug 'scrooloose/syntastic'
@@ -201,7 +201,6 @@ command! Bd bp | sp | bn | bd         " delete buffer bug keep window
 iab pdb import ipdb;ipdb.set_trace()<ESC>
 iab isodate <C-R>=strftime("%Y-%m-%d")<CR>
 
-
 " --- configure Plugins -------------------------------------------------
 " vim-grepper
 nnoremap <F2> :Grepper -tool rg -open -cword -noprompt<CR>
@@ -209,7 +208,7 @@ nnoremap <leader>f :Grepper -tool rg<CR>
 
 " ripgrep without Grepper
 if executable('rg')
-    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepprg=rg\ -H\ --vimgrep\ --no-heading\ --smart-case
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
@@ -233,7 +232,7 @@ nnoremap <c-p>r :CtrlPMRUFiles<CR>
 nnoremap <c-p>d :CtrlPBookmarkDir<CR>
 " ripgrep extension
 if executable('rg')
-  " Use rg in CtrlP for listing files. Lightning fast and respects .gitignore
+  " Use rg in CtrlP for listing files. Fast and respects .gitignore
   let g:ctrlp_user_command = 'rg %s --files'
   " gg is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
