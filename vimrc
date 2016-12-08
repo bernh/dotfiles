@@ -23,6 +23,7 @@ Plug 'ervandew/supertab'
 Plug 'maralla/completor.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'jrosiek/vim-mark'
+Plug 'junegunn/vim-slash'  " put after vim-mark to avoid problems with * and # mappings
 
 "colorschemes
 Plug 'altercation/vim-colors-solarized'
