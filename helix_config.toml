@@ -1,14 +1,25 @@
-theme = "sonokai"
+theme = "adwaita"
 
 [editor]
 line-number = "relative"
-bufferline = "always"
-auto-save = true
+true-color = true
+cursorline = true
 
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
 select = "underline"
 
-[keys.insert]
-j = { k = "normal_mode" }
+[editor.lsp]
+display-messages = true
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control", "file-name"]
+
+[keys.normal]
+_ = ":toggle lsp.display-inlay-hints"
+
+# create a new minor mode bound to `+`, used for rust development within zellij
+[keys.normal."+"]
+b = ":run-shell-command zellij r -f -- cargo build"
+t = ":run-shell-command zellij r -f -- cargo test"
